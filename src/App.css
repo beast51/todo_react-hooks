@@ -1,38 +1,146 @@
-.App {
-  text-align: center;
+* {
+  box-sizing: border-box;
+  font-family: Roboto, sans-serif;
+  font-weight: 400;
+  margin: 0;
+  padding: 0; 
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+ul {
+  margin: 0;
+  list-style: none; 
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+form select,
+input {
+border: 1px solid #c4c4c4;
+border-radius: 4px;
+height: 36px;
+width: 100%;
+padding: 0 0 0 12px;
+background-color: #ffffff; }
+
+a {
+text-decoration: none;
+cursor: pointer;
+color: #3b6d9a;
+outline: none;
+transition: 0.3s; }
+
+button {
+display: block;
+background: orangered;
+cursor: pointer;
+border: none;
+text-align: center;
+width: 100px;
+line-height: 44px;
+transition: 0.3s;
+border-radius: 4px;
+white-space: nowrap;
+font-family: Roboto, sans-serif;
+font-size: 18px; 
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+h1 {
+  margin-bottom: 20px;
+}
+
+.todo-out__title {
+  margin-bottom: 10px;
+}
+
+.todo {
+  padding: 10px 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+}
+
+.todo__input {
+  margin-bottom: 50px;
+}
+
+.todo-out {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.todo-out__items {
+  width: 100%;
+}
+
+.todo-out__item {
+  display: flex;
+  margin-bottom: 10px;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #c4c4c4;
+  border-radius: 4px;
+  min-height: 36px;
+}
+
+.item-input {
+  display: flex;
+  align-items: center;
+  padding: 8px 8px;
+  width: 80%; 
+}
+
+.item-input__checkbox {
+  height: 16px;
+  width: 40px;
+  margin-right: 16px;
+  min-width: 40px;
+}
+
+.item-input__checkbox:checked + span {
+  text-decoration: line-through;
+}
+
+.item-input__button {
+  padding:0px 5px;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 36px;
+  width: 20%;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.item-input__text {
+  word-break: break-word;
+  display: block;
+  width: 100%;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@media screen and (min-width: 768px) {
+  .todo {
+      padding: 10px 50px;
   }
-  to {
-    transform: rotate(360deg);
+  .item-input {
+      width: 90%; 
+  }
+  .item-input__button {
+      width: 10%;
   }
 }
+
+@media screen and (min-width: 1024px) {
+  .todo {
+      padding: 30px 100px;
+  }
+}
+
+@media screen and (min-width: 1366px) {
+  .todo {
+      padding: 50px 400px;
+  }
+}
+
+
+
+
+
+
