@@ -5,11 +5,12 @@ import "./App.css";
 function App() {
   const [todoText, setTodoText] = useState("");
   const [itemTodoText, setItemTodoText] = useState("");
-  const [todos, setTodos] = useLocalState("todoList" || "[]");
+  const [todos, setTodos] = useLocalState("todoList");
+  
 
   function useLocalState(localItem) {
     const [loc, setState] = useState(
-      JSON.parse(localStorage.getItem(localItem))
+      JSON.parse(localStorage.getItem(localItem) || "[]")
     );
     function setLoc(newItem) {
       localStorage.setItem(localItem, JSON.stringify(newItem));
