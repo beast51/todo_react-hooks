@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import Items from "./Components/Items";
+import Input from "./Components/Input";
 import "./App.css";
 
 function App() {
-  const [todoText, setTodoText] = useState("");
   const [itemTodoText, setItemTodoText] = useState("");
   const [todos, setTodos] = useLocalState("todoList");
-  
 
   function useLocalState(localItem) {
     const [loc, setState] = useState(
@@ -19,19 +18,16 @@ function App() {
     return [loc, setLoc];
   }
 
-  const addTodo = (event) => {
-    if (event.key === "Enter" && todoText.trim() !== "") {
-      setTodos([
-        ...todos,
-        {
-          id: Date.now(),
-          text: todoText,
-          completed: false,
-          edit: false,
-        },
-      ]);
-      setTodoText("");
-    }
+  const addTodo = (text) => {
+    setTodos([
+      ...todos,
+      {
+        id: Date.now(),
+        text: text,
+        completed: false,
+        edit: false,
+      },
+    ]);
   };
 
   const deleteTodo = (id) => {
@@ -57,30 +53,28 @@ function App() {
     setTodos([...todos]);
   };
 
-  const editTodoOff = (id, event) => {
-    if (event.key === "Enter") {
-      todos.forEach((elem) => {
-        if (elem.id === id) {
+  const editTodoOff = (id) => (text) => {
+    todos.forEach((elem) => {
+      if (elem.id === id) {
+        if (text.trim() !== "") {
+          elem.text = text;
           elem.edit = !elem.edit;
-          if (itemTodoText.trim() !== "") {
-            elem.text = itemTodoText;
-          }
+        } else {
+          elem.edit = !elem.edit;
         }
-      });
-      setTodos([...todos]);
-    }
+      }
+    });
+    setTodos([...todos]);
   };
 
   return (
     <div className="todo">
       <h1 className="todo__title">Todo</h1>
-      <input
+      <Input
         className="todo__input"
-        type="text"
         placeholder="Введите название дела"
-        onChange={(event) => setTodoText(event.target.value)}
-        onKeyPress={addTodo}
-        value={todoText}
+        onEnter={addTodo}
+        value={itemTodoText}
       />
       <div className="todo-out">
         <p className="todo-out__title">
